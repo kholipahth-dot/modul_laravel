@@ -42,24 +42,27 @@
                                 <td>{{ $mahasiswa->nim }}</td>
                                 <td>{{ $mahasiswa->nama }}</td>
                                 <td>{{ $mahasiswa->kelas }}</td>
-                                <td>{{ $mahasiswa->matakuliah }}</td>
+                                <td>{{ $mahasiswa->matakuliah->nama_mk ?? '-' }}</td>
                                 <td>
-                                    <div class="btn-group" role="group">
-                                        <!-- Tombol Edit -->
-                                        <a href="#" class="btn btn-warning btn-sm">
-                                            <i class="bi bi-pencil-square"></i> Edit
-                                        </a>
-                                        <!-- Tombol Hapus -->
-                                        <form action="#" method="POST" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" 
-                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="bi bi-trash"></i> Hapus
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
+    <div class="btn-group" role="group">
+        <a href="{{ route('mahasiswa.edit', $mahasiswa->nim) }}"
+           class="btn btn-warning btn-sm">
+            Edit
+        </a>
+
+        <form action="{{ route('mahasiswa.destroy', $mahasiswa->nim) }}"
+              method="POST"
+              style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('Yakin ingin menghapus?')">
+                Hapus
+            </button>
+        </form>
+    </div>
+</td>
                             </tr>
                             @endforeach
                         </tbody>
