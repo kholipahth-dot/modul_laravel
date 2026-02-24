@@ -17,6 +17,24 @@
         </div>
     </div>
 
+    <hr>
+
+    <h4>Daftar Mahasiswa yang Mengambil Mata Kuliah Ini</h4>
+
+    @if($matakuliah->mahasiswas->count() > 0)
+        <ul class="list-group">
+            @foreach($matakuliah->mahasiswas as $mhs)
+                <li class="list-group-item">
+                    {{ $mhs->nama }} ({{ $mhs->nim }})
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <div class="alert alert-warning">
+            Belum ada mahasiswa yang mengambil mata kuliah ini.
+        </div>
+    @endif
+
     <a href="{{ route('matakuliah.index') }}" class="btn btn-secondary mt-3">Kembali</a>
 
 </body>

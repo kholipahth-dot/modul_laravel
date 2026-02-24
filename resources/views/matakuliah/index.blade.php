@@ -36,6 +36,10 @@
                 <td>{{ $mk->sks }}</td>
                 <td>{{ $mk->semester }}</td>
                 <td>
+    <a href="{{ route('matakuliah.show', $mk->kode_mk) }}"
+       class="btn btn-info btn-sm">
+       Lihat Mahasiswa
+    </a>
                     <a href="{{ route('matakuliah.edit',$mk->kode_mk) }}"
                        class="btn btn-warning btn-sm">Edit</a>
                                                       </td>
